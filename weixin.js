@@ -197,7 +197,7 @@ exports.reply = function* (next) {
       console.log(reply)
     }
     else if (content === '6') {
-      var data = yield wechatApi.uploadMaterial('video', path.join(__dirname, '../6.mp4'))
+      var data = yield wechatApi.uploadMaterial('video', path.join(__dirname, '/6.mp4'))
       reply = {
         type: 'video',
         title: '回复视频内容',
@@ -206,7 +206,7 @@ exports.reply = function* (next) {
       }
     }
     else if (content === '7') {
-      var data = yield wechatApi.uploadMaterial('image', path.join(__dirname, '../2.jpg'))
+      var data = yield wechatApi.uploadMaterial('image', path.join(__dirname, '/2.jpg'))
 
       reply = {
         type: 'music',
@@ -217,7 +217,7 @@ exports.reply = function* (next) {
       }
     }
     else if (content === '8') {
-      var data = yield wechatApi.uploadMaterial('image', path.join(__dirname, '../2.jpg'), {type: 'image'})
+      var data = yield wechatApi.uploadMaterial('image', path.join(__dirname, '/2.jpg'), {type: 'image'})
 
       reply = {
         type: 'image',
@@ -225,7 +225,7 @@ exports.reply = function* (next) {
       }
     }
     else if (content === '9') {
-      var data = yield wechatApi.uploadMaterial('video', path.join(__dirname, '../6.mp4'), {type: 'video', description: '{"title": "Really a nice place", "introduction": "Never think it so easy"}'})
+      var data = yield wechatApi.uploadMaterial('video', path.join(__dirname, '/6.mp4'), {type: 'video', description: '{"title": "Really a nice place", "introduction": "Never think it so easy"}'})
 
       console.log(data)
 
@@ -237,7 +237,7 @@ exports.reply = function* (next) {
       }
     }
     else if (content === '10') {
-      var picData = yield wechatApi.uploadMaterial('image', path.join(__dirname, '../2.jpg'), {})
+      var picData = yield wechatApi.uploadMaterial('image', path.join(__dirname, '/2.jpg'), {})
 
       var media = {
         articles: [{
