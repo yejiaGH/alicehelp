@@ -7,7 +7,7 @@ var util = require('./util');
 // var Promise = require('bluebird');
 // var request = Promise.promisify(require('request'));
 
-module.exports = function(opts) {
+module.exports = function(opts, handler) {
   var wechat = new Wechat(opts);
 
   return function *(next) {
@@ -50,6 +50,7 @@ module.exports = function(opts) {
       console.log('formatMessage-----> ', message);
 
       // 自动恢复
+      /*
       if (message.MsgType === 'event') {
         if (message.Event === 'subscribe') {
           var now = new Date().getTime();
@@ -66,11 +67,16 @@ module.exports = function(opts) {
 
           console.log(reply);
           that.body = reply;
-
           return;
         }
       }
-    }
-    
+      */
+
+      this.weixin = message;
+
+      yield handler.call(this, next);
+
+      wechat.reply.call(this);
+    }    
   }
 }
